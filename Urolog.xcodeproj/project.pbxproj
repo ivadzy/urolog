@@ -29,6 +29,7 @@
 		2801B3452317F50C0050F22B /* UrologTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UrologTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2801B34A2317F50C0050F22B /* UrologTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrologTests.swift; sourceTree = "<group>"; };
 		2801B34C2317F50C0050F22B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2801B3562317FAC40050F22B /* Dev.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Dev.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				2801B34A2317F50C0050F22B /* UrologTests.swift */,
+				2801B3562317FAC40050F22B /* Dev.md */,
 				2801B34C2317F50C0050F22B /* Info.plist */,
 			);
 			path = UrologTests;
