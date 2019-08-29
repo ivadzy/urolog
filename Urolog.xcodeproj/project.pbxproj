@@ -10,7 +10,24 @@
 		2801B3462317F50C0050F22B /* Urolog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2801B33C2317F50C0050F22B /* Urolog.framework */; };
 		2801B34B2317F50C0050F22B /* UrologTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B34A2317F50C0050F22B /* UrologTests.swift */; };
 		2801B34D2317F50C0050F22B /* Urolog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2801B33F2317F50C0050F22B /* Urolog.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2801B358231806050050F22B /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B357231806050050F22B /* LogController.swift */; };
+		2801B358231806050050F22B /* Urolog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B357231806050050F22B /* Urolog.swift */; };
+		2801B35C231809450050F22B /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B35B231809450050F22B /* Endpoint.swift */; };
+		2801B35E231834B50050F22B /* SeverityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B35D231834B50050F22B /* SeverityTests.swift */; };
+		2801B36023185A450050F22B /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B35F23185A450050F22B /* Format.swift */; };
+		285B1B63231949B4003F384B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285B1B62231949B4003F384B /* Context.swift */; };
+		285B1B6523194F19003F384B /* Severity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285B1B6423194F19003F384B /* Severity.swift */; };
+		285B1B6723194F36003F384B /* Writer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285B1B6623194F36003F384B /* Writer.swift */; };
+		285B1B692319605E003F384B /* TargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285B1B682319605E003F384B /* TargetTests.swift */; };
+		287857EA231BBDF4006D0AAE /* FileAtPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287857E9231BBDF4006D0AAE /* FileAtPath.swift */; };
+		287857EC231BC333006D0AAE /* LogFileAtPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287857EB231BC333006D0AAE /* LogFileAtPath.swift */; };
+		287857EE231BC6F6006D0AAE /* StandardOutputEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287857ED231BC6F6006D0AAE /* StandardOutputEndpoint.swift */; };
+		287FEF79231AE1F200862709 /* FileWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FEF78231AE1F200862709 /* FileWriter.swift */; };
+		287FEF7B231AE37000862709 /* FileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FEF7A231AE37000862709 /* FileEndpoint.swift */; };
+		287FEF7D231AE45200862709 /* AsyncFileEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FEF7C231AE45200862709 /* AsyncFileEndpoint.swift */; };
+		287FEF7F231AE4B900862709 /* AsyncWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FEF7E231AE4B900862709 /* AsyncWriter.swift */; };
+		287FEF82231AEB7100862709 /* ConsoleWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287FEF81231AEB7100862709 /* ConsoleWriter.swift */; };
+		28978AF3231C0C6500D80281 /* DefaultFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28978AF2231C0C6500D80281 /* DefaultFormat.swift */; };
+		28978AF5231C0C7700D80281 /* DetailedFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28978AF4231C0C7700D80281 /* DetailedFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +48,24 @@
 		2801B34A2317F50C0050F22B /* UrologTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrologTests.swift; sourceTree = "<group>"; };
 		2801B34C2317F50C0050F22B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2801B3562317FAC40050F22B /* Dev.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Dev.md; sourceTree = "<group>"; };
-		2801B357231806050050F22B /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
+		2801B357231806050050F22B /* Urolog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Urolog.swift; sourceTree = "<group>"; };
+		2801B35B231809450050F22B /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		2801B35D231834B50050F22B /* SeverityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeverityTests.swift; sourceTree = "<group>"; };
+		2801B35F23185A450050F22B /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		285B1B62231949B4003F384B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		285B1B6423194F19003F384B /* Severity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Severity.swift; sourceTree = "<group>"; };
+		285B1B6623194F36003F384B /* Writer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Writer.swift; sourceTree = "<group>"; };
+		285B1B682319605E003F384B /* TargetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetTests.swift; sourceTree = "<group>"; };
+		287857E9231BBDF4006D0AAE /* FileAtPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileAtPath.swift; sourceTree = "<group>"; };
+		287857EB231BC333006D0AAE /* LogFileAtPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFileAtPath.swift; sourceTree = "<group>"; };
+		287857ED231BC6F6006D0AAE /* StandardOutputEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardOutputEndpoint.swift; sourceTree = "<group>"; };
+		287FEF78231AE1F200862709 /* FileWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileWriter.swift; sourceTree = "<group>"; };
+		287FEF7A231AE37000862709 /* FileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEndpoint.swift; sourceTree = "<group>"; };
+		287FEF7C231AE45200862709 /* AsyncFileEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFileEndpoint.swift; sourceTree = "<group>"; };
+		287FEF7E231AE4B900862709 /* AsyncWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncWriter.swift; sourceTree = "<group>"; };
+		287FEF81231AEB7100862709 /* ConsoleWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleWriter.swift; sourceTree = "<group>"; };
+		28978AF2231C0C6500D80281 /* DefaultFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFormat.swift; sourceTree = "<group>"; };
+		28978AF4231C0C7700D80281 /* DetailedFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedFormat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +109,12 @@
 			isa = PBXGroup;
 			children = (
 				2801B33F2317F50C0050F22B /* Urolog.h */,
-				2801B357231806050050F22B /* LogController.swift */,
+				2801B357231806050050F22B /* Urolog.swift */,
+				287FEF85231AF27000862709 /* File */,
+				287FEF80231AEAD400862709 /* Datum */,
+				287FEF77231AD38200862709 /* Format */,
+				287FEF76231AD35900862709 /* Writer */,
+				287FEF75231AD34B00862709 /* Endpoint */,
 				2801B3402317F50C0050F22B /* Info.plist */,
 			);
 			path = Urolog;
@@ -84,11 +123,63 @@
 		2801B3492317F50C0050F22B /* UrologTests */ = {
 			isa = PBXGroup;
 			children = (
+				2801B35D231834B50050F22B /* SeverityTests.swift */,
+				285B1B682319605E003F384B /* TargetTests.swift */,
 				2801B34A2317F50C0050F22B /* UrologTests.swift */,
 				2801B3562317FAC40050F22B /* Dev.md */,
 				2801B34C2317F50C0050F22B /* Info.plist */,
 			);
 			path = UrologTests;
+			sourceTree = "<group>";
+		};
+		287FEF75231AD34B00862709 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				2801B35B231809450050F22B /* Endpoint.swift */,
+				287857ED231BC6F6006D0AAE /* StandardOutputEndpoint.swift */,
+				287FEF7A231AE37000862709 /* FileEndpoint.swift */,
+				287FEF7C231AE45200862709 /* AsyncFileEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		287FEF76231AD35900862709 /* Writer */ = {
+			isa = PBXGroup;
+			children = (
+				285B1B6623194F36003F384B /* Writer.swift */,
+				287FEF81231AEB7100862709 /* ConsoleWriter.swift */,
+				287FEF78231AE1F200862709 /* FileWriter.swift */,
+				287FEF7E231AE4B900862709 /* AsyncWriter.swift */,
+			);
+			path = Writer;
+			sourceTree = "<group>";
+		};
+		287FEF77231AD38200862709 /* Format */ = {
+			isa = PBXGroup;
+			children = (
+				2801B35F23185A450050F22B /* Format.swift */,
+				28978AF2231C0C6500D80281 /* DefaultFormat.swift */,
+				28978AF4231C0C7700D80281 /* DetailedFormat.swift */,
+			);
+			path = Format;
+			sourceTree = "<group>";
+		};
+		287FEF80231AEAD400862709 /* Datum */ = {
+			isa = PBXGroup;
+			children = (
+				285B1B6423194F19003F384B /* Severity.swift */,
+				285B1B62231949B4003F384B /* Context.swift */,
+			);
+			path = Datum;
+			sourceTree = "<group>";
+		};
+		287FEF85231AF27000862709 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				287857E9231BBDF4006D0AAE /* FileAtPath.swift */,
+				287857EB231BC333006D0AAE /* LogFileAtPath.swift */,
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +291,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2801B358231806050050F22B /* LogController.swift in Sources */,
+				285B1B6723194F36003F384B /* Writer.swift in Sources */,
+				287857EA231BBDF4006D0AAE /* FileAtPath.swift in Sources */,
+				28978AF3231C0C6500D80281 /* DefaultFormat.swift in Sources */,
+				287857EE231BC6F6006D0AAE /* StandardOutputEndpoint.swift in Sources */,
+				28978AF5231C0C7700D80281 /* DetailedFormat.swift in Sources */,
+				2801B35C231809450050F22B /* Endpoint.swift in Sources */,
+				285B1B63231949B4003F384B /* Context.swift in Sources */,
+				2801B358231806050050F22B /* Urolog.swift in Sources */,
+				287FEF82231AEB7100862709 /* ConsoleWriter.swift in Sources */,
+				2801B36023185A450050F22B /* Format.swift in Sources */,
+				287FEF79231AE1F200862709 /* FileWriter.swift in Sources */,
+				287FEF7B231AE37000862709 /* FileEndpoint.swift in Sources */,
+				287FEF7F231AE4B900862709 /* AsyncWriter.swift in Sources */,
+				285B1B6523194F19003F384B /* Severity.swift in Sources */,
+				287857EC231BC333006D0AAE /* LogFileAtPath.swift in Sources */,
+				287FEF7D231AE45200862709 /* AsyncFileEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2801B35E231834B50050F22B /* SeverityTests.swift in Sources */,
 				2801B34B2317F50C0050F22B /* UrologTests.swift in Sources */,
+				285B1B692319605E003F384B /* TargetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +471,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ivadzy.Urolog;
+				PRODUCT_BUNDLE_IDENTIFIER = ivadzy.urolog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -390,7 +498,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ivadzy.Urolog;
+				PRODUCT_BUNDLE_IDENTIFIER = ivadzy.urolog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
