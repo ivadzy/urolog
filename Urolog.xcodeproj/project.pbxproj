@@ -10,6 +10,7 @@
 		2801B3462317F50C0050F22B /* Urolog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2801B33C2317F50C0050F22B /* Urolog.framework */; };
 		2801B34B2317F50C0050F22B /* UrologTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B34A2317F50C0050F22B /* UrologTests.swift */; };
 		2801B34D2317F50C0050F22B /* Urolog.h in Headers */ = {isa = PBXBuildFile; fileRef = 2801B33F2317F50C0050F22B /* Urolog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2801B358231806050050F22B /* LogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2801B357231806050050F22B /* LogController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,7 @@
 		2801B34A2317F50C0050F22B /* UrologTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrologTests.swift; sourceTree = "<group>"; };
 		2801B34C2317F50C0050F22B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2801B3562317FAC40050F22B /* Dev.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Dev.md; sourceTree = "<group>"; };
+		2801B357231806050050F22B /* LogController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				2801B33F2317F50C0050F22B /* Urolog.h */,
+				2801B357231806050050F22B /* LogController.swift */,
 				2801B3402317F50C0050F22B /* Info.plist */,
 			);
 			path = Urolog;
@@ -150,6 +153,7 @@
 				TargetAttributes = {
 					2801B33B2317F50C0050F22B = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					2801B3442317F50C0050F22B = {
 						CreatedOnToolsVersion = 10.3;
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2801B358231806050050F22B /* LogController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +348,7 @@
 		2801B3512317F50C0050F22B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -360,6 +366,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ivadzy.Urolog;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -368,6 +375,7 @@
 		2801B3522317F50C0050F22B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -393,6 +401,7 @@
 		2801B3542317F50C0050F22B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6M9LRL268Y;
 				INFOPLIST_FILE = UrologTests/Info.plist;
@@ -411,6 +420,7 @@
 		2801B3552317F50C0050F22B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6M9LRL268Y;
 				INFOPLIST_FILE = UrologTests/Info.plist;
