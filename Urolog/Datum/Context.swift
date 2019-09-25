@@ -10,15 +10,15 @@ import Foundation
 
 public struct Context
 {
-    let severity: Severity
-    let message: String
-    let date: Date
+    public let severity: Severity
+    public let message: String
+    public let date: Date
     
-    let functionName: String
-    let filePath: String
-    var fileName: String { return (self.filePath as NSString).lastPathComponent }
-    let lineNumber: Int
+    public let functionName: String
+    public let filePath: String
+    public var fileName: String { return (self.filePath as NSString).lastPathComponent }
+    public let lineNumber: Int
     
-    let threadName: String
-    let isMainThread: Bool
+    public let threadName: String
+    public let isMainThread: Bool
 }
