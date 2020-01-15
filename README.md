@@ -1,4 +1,4 @@
-#  Dev
+#  Urolog
 
 * What are responsibilities of a logger?
     *  **Logs message entries(message itself, date, line, file, additional context)** 
@@ -23,5 +23,3 @@ they're pure fakes.
 * Format
 * Endpoint
 * LogController
-
-
