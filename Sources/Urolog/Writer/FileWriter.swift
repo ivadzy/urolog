@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public final class FileWriter: Writer
 {
     // MARK: - Initialization
@@ -18,29 +19,31 @@ public final class FileWriter: Writer
     }
 }
 
+
+
+
 // MARK: - Public
-// MARK: Writer
 extension FileWriter
 {
+    // MARK: Writer
     public func write(_ entry: String)
     {
-        guard
-            let data = data(from: entry)
-        else
+        if let data = data(from: entry)
         {
-            return
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(data)
         }
-        
-        fileHandle.seekToEndOfFile()
-        fileHandle.write(data)
     }
 }
+
+
+
 
 // MARK: - Private
 private extension FileWriter
 {
     func data(from entry: String) -> Data?
     {
-        return entry.data(using: .utf8)
+        entry.data(using: .utf8)
     }
 }

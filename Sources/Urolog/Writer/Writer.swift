@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public protocol Writer: TextOutputStream
 {
     func write(_ entry: String)

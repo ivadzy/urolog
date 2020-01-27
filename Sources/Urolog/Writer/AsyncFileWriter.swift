@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public final class AsyncFileWriter: Writer
 {
     // MARK: - Initialization
@@ -21,15 +22,20 @@ public final class AsyncFileWriter: Writer
         self.queue = queue
     }
     
+    
+    
+    
     // MARK: - Private
     private let fileWriter: FileWriter
 }
 
 
+
+
 // MARK: - Public
-// MARK: Writer
 extension AsyncFileWriter
 {
+    // MARK: Writer
     public func write(_ entry: String)
     {
         queue.async { [fileWriter] in

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 public protocol FileAtPath
 {
     init(_ url: URL)
@@ -15,5 +16,3 @@ public protocol FileAtPath
     
     func fileHandle() throws -> FileHandle
 }
-
-

@@ -14,10 +14,13 @@ public struct Context
     public let message: String
     public let date: Date
     
-    public let functionName: String
-    public let filePath: String
-    public var fileName: String { return (self.filePath as NSString).lastPathComponent }
     public let lineNumber: Int
+    public let functionName: String
+    
+    public let filePath: String
+    public var fileName: String {
+        self.filePath.lastPathComponent
+    }
     
     public let threadName: String
     public let isMainThread: Bool

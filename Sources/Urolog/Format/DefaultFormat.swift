@@ -8,30 +8,26 @@
 
 import Foundation
 
-extension DefaultFormat
-{
-    private struct Constants
-    {
-        static let separator = " : "
-    }
-}
 
-public final class DefaultFormat: FormatProtocol
+public final class DefaultFormat: Format
 {
-    // MARK: Initialization
+    // MARK: - Initialisation
     public init() {}
 }
 
+
+
+
 // MARK: - Public
-// MARK: FormalProtocol
 extension DefaultFormat
 {
+    // MARK: Format
     public func format(_ context: Context) -> String
     {
         return [
             "\(context.date)"
             , "[\(context.severity)]"
             , "\(context.message)"
-        ].joined(separator: Constants.separator) + "\n"
+        ].joined(separator: .formatSeparator) + "\n"
     }
 }

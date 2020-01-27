@@ -8,15 +8,20 @@
 
 import Foundation
 
-public final class DetailedFormat: FormatProtocol
+
+public final class DetailedFormat: Format
 {
+    // MARK: - Initialisation
     public init() {}
-    struct Constants
-    {
-        static let separator = " : "
-    }
-    
-    public func format(_ context: Context) -> String
+}
+
+
+
+
+// MARK: - Public
+public extension DetailedFormat
+{
+    func format(_ context: Context) -> String
     {
         return [
             "\(context.date)"
@@ -24,6 +29,6 @@ public final class DetailedFormat: FormatProtocol
             , "[\(context.fileName)]"
             , "[\(context.functionName)]"
             , "\(context.message)"
-        ].joined(separator: Constants.separator) + "\n"
+            ].joined(separator: .formatSeparator) + "\n"
     }
 }

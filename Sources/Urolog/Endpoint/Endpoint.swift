@@ -8,10 +8,12 @@
 
 import Foundation
 
+
 public protocol Endpoint
 {
     var minimalSeverity: Severity { get }
-    var format: FormatProtocol { get }
+    var format: Format { get }
     var writer: Writer { get }
+    
     func send(_ context: Context)
 }

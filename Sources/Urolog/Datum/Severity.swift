@@ -8,12 +8,14 @@
 
 import Foundation
 
+
 public enum Severity: Int, Comparable
 {
     case debug
     case info
     case warning
     case error
+    
     
     public static func < (lhs: Severity, rhs: Severity) -> Bool
     {

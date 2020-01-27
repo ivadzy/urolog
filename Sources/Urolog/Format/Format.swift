@@ -7,32 +7,15 @@
 //
 
 import Foundation
-import os
 
-public protocol FormatProtocol
+
+public protocol Format
 {
     func format(_ context: Context) -> String
 }
 
-// MARK: - Concrete Format
 
-public final class Format: FormatProtocol
-{
-    private let handler: (Context) -> String
-    public init(_ handler: @escaping (Context) -> String)
-    {
-        self.handler = handler
-    }
-}
 
-extension Format
-{
-    public func format(_ context: Context)
-        -> String
-    {
-        return handler(context)
-    }
-}
 
 
 

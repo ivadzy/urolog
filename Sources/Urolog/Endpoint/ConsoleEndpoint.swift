@@ -8,29 +8,32 @@
 
 import Foundation
 
+
 public final class ConsoleEndpoint: Endpoint
 {
     // MARK: - Initialization
-    private(set) public var minimalSeverity: Severity
-    private(set) public var format: FormatProtocol
-    private(set) public var writer: Writer = ConsoleWriter()
-
+    public let minimalSeverity: Severity
+    public let format: Format
+    public let writer: Writer = ConsoleWriter()
+    
+    
     public required init(
         minimalSeverity: Severity = .debug
-        , format: FormatProtocol = DefaultFormat()
-        , writer: Writer = ConsoleWriter()
+        , format: Format = DefaultFormat()
     )
     {
         self.format = format
-        self.writer = writer
         self.minimalSeverity = minimalSeverity
     }
 }
 
+
+
+
 // MARK: - Public
-// MARK: Endpoint
 extension ConsoleEndpoint
 {
+    // MARK: Endpoint
     public func send(_ context: Context)
     {
         if

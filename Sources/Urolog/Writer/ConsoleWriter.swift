@@ -9,21 +9,31 @@
 import Foundation
 
 
-public typealias ConsoleWriter = StandardOutputWriter
+public typealias ConsoleWriter =
+    StandardOutputWriter
+
+
 public final class StandardOutputWriter: Writer
 {
     // MARK: - Initialization
     public init() {}
     
+    
+    
+    
     // MARK: - Private
-    private let standardOutput = FileHandle.standardOutput
+    private let standardOutput =
+        FileHandle.standardOutput
 }
 
+
+
+
 // MARK: - Public
-// MARK: Writer
-extension StandardOutputWriter
+public extension StandardOutputWriter
 {
-    public func write(_ entry: String)
+    // MARK: Writer
+    func write(_ entry: String)
     {
         if
             let data = entry.data(using: .utf8)

@@ -8,47 +8,50 @@
 
 import Foundation
 
-// MARK: - Constants, Errors
-extension LogFileAtPath
-{
-    enum IOError: Error
-    {
-        case pathIsNotWritable
-    }
-}
 
 public final class LogFileAtPath: FileAtPath
 {
-    // MARK: Initialization
+    // MARK: - Initialization
     private let url: URL
     public init(_ url: URL)
     {
         self.url = url
     }
     
+    
     public convenience init(_ path: String)
     {
-        self.init(URL(fileURLWithPath: path))
+        self.init(
+            URL(fileURLWithPath: path)
+        )
     }
 }
 
+
+
+
 // MARK: - Public
-extension LogFileAtPath
+public extension LogFileAtPath
 {
-    public func fileHandle() throws -> FileHandle
+    func fileHandle() throws -> FileHandle
     {
         try prepareFile(at: url)
         return try FileHandle(forUpdating: url)
     }
 }
 
-extension LogFileAtPath
+
+
+
+// MARK: - Private
+private extension LogFileAtPath
 {
-    private func prepareFile(at url: URL) throws
+    func prepareFile(at url: URL) throws
     {
-        let path = url.path
-        if
-            !fileExists(at: path)
+        let path =
+            url.path
+        
+        if !fileExists(at: path)
         {
             createFile(path)
         }
@@ -58,7 +61,8 @@ extension LogFileAtPath
         }
     }
     
-    private func createFile(_ path: String)
+    
+    func createFile(_ path: String)
     {
         FileManager.default.createFile(
             atPath: url.path
@@ -67,19 +71,27 @@ extension LogFileAtPath
         )
     }
     
-    private func fileExists(
-        at path: String
-        )
-        -> Bool
+    
+    func fileExists(at path: String) -> Bool
     {
-        return FileManager.default.fileExists(atPath: path)
+        FileManager.default.fileExists(atPath: path)
     }
     
-    private func fileIsWritable(
-        at path: String
-        )
-        -> Bool
+    
+    func fileIsWritable(at path: String) -> Bool
     {
-        return FileManager.default.isWritableFile(atPath: path)
+        FileManager.default.isWritableFile(atPath: path)
+    }
+}
+
+
+
+
+// MARK: -
+extension LogFileAtPath
+{
+    public enum IOError: Error
+    {
+        case pathIsNotWritable
     }
 }

@@ -8,75 +8,79 @@
 
 import Foundation
 
+
 public final class AsyncFileEndpoint: Endpoint
 {
     // MARK: - Initialization
     public let minimalSeverity: Severity
-    public let format: FormatProtocol
+    public let format: Format
     public let writer: Writer
+    
     private let queue: DispatchQueue
+    
+    
     public required init(
         minimalSeverity: Severity = .debug
-        , format: FormatProtocol = DefaultFormat()
-        , fileAtPath: FileAtPath
+        , format: Format = DefaultFormat()
+        , writer: Writer
         , queue: DispatchQueue
     ) throws
     {
         self.format = format
         self.minimalSeverity = minimalSeverity
         self.queue = queue
-        
-        let handle = try fileAtPath.fileHandle()
-        self.writer = AsyncFileWriter(handle: handle, queue: queue)
+        self.writer = writer
         
         self.fileEndpoint =
             try FileEndpoint(
                 minimalSeverity: minimalSeverity
                 , format: format
-                , fileAtPath: fileAtPath
                 , writer: self.writer
-            )
+        )
     }
+    
+    
+    public convenience init(
+        minimalSeverity: Severity = .debug
+        , format: Format = DefaultFormat()
+        , file: FileAtPath
+    ) throws
+    {
+        let queue = AsyncFileEndpoint.defaultQueue
+        let handle = try file.fileHandle()
+        let writer = AsyncFileWriter(handle: handle, queue: queue)
+        
+        try self.init(
+            minimalSeverity: minimalSeverity
+            , format: format
+            , writer: writer
+            , queue: queue
+        )
+    }
+    
+    
+    
     
     // MARK:  - Private
     private let fileEndpoint: FileEndpoint
     
-    // MARK: Asynchronous I/O
-    private static let dispatchQueueLabel = "com.urolog.async"
-    private static let defaultQueue: DispatchQueue = {
-        let q =
-            DispatchQueue(
-                label: AsyncFileEndpoint.dispatchQueueLabel,
-                qos: .background
-            )
-        return q
-    }()
+    
+    private static let defaultQueue: DispatchQueue =
+        DispatchQueue(
+            label: "com.urolog.async"
+            , qos: .background
+    )
 }
 
+
+
+
 // MARK: - Public
-// MARK:  Endpoint
 extension AsyncFileEndpoint
 {
+    // MARK:  Endpoint
     public func send(_ context: Context)
     {
         fileEndpoint.send(context)
-    }
-}
-
-extension AsyncFileEndpoint
-{
-    public convenience init(
-        minimalSeverity: Severity = .debug
-        , format: FormatProtocol = DefaultFormat()
-        , fileAtPath: FileAtPath
-    
-    ) throws
-    {
-        try self.init(
-                minimalSeverity: minimalSeverity
-                , format: format
-                , fileAtPath: fileAtPath
-                , queue: AsyncFileEndpoint.defaultQueue
-            )
     }
 }

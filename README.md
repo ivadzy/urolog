@@ -1,25 +1,43 @@
 #  Urolog
 
-* What are responsibilities of a logger?
-    *  **Logs message entries(message itself, date, line, file, additional context)** 
-    * **Accept different formats and format messages** / **Maps log entries to string**
-    * **Decides whether or not to show(add)  a log entry**
-    Additional responsibilities
-        Manage files
-        * Creates log files
-        * Dated log files 
-        
-What is logger?
+Urolog is a true object-oriented logging framework for iOS and MacOS platforms.
+Also Urolog is the simplest and easy to extend solution.**Elegant Objects** principles 
+are respected here. 
 
-Keep in mind that in the real life we don't have a thing such as Logger. This is a purely programming notion.
-So it's fishy to say it will follow the EO principles. It won't. Actually, a lot of parts in the logger won't adhere EO style, bc
-they're pure fakes.
+The framework support console and file logging, you can define your own endpoints easily.
 
+The project is insiperd by [LogKit](https://github.com/logkit/logkit)
 
+```
+Urolog(
+    endpoints: [ConsoleEndpoint(format: DetailedFormat())]
+)
+```
 
-## Names
+More complex example with multiple endpoints:
+```
+let file = LogFileAtPath(logFileURL)
 
-* Entry
-* Format
-* Endpoint
-* LogController
+if let fileEndpoint = 
+    try? AsyncFileEndpoint(
+        format: DetailedFormat()
+        , fileAtPath: file
+    )
+{
+    Urolog(
+        endpoints: 
+            [
+                ConsoleEndpoint(format: DetailedFormat())
+                , fileEndpoint
+            ]
+    )
+}
+```
+
+## TODO
+
+-[] DispatchQueue abstraction
+-[] Flush 
+-[] Rotating endpoint
+-[] Support sending logs via email
+
