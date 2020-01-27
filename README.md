@@ -21,7 +21,7 @@ let file = LogFileAtPath(logFileURL)
 if let fileEndpoint = 
     try? AsyncFileEndpoint(
         format: DetailedFormat()
-        , fileAtPath: file
+        , file: file
     )
 {
     Urolog(
@@ -36,8 +36,8 @@ if let fileEndpoint =
 
 ## TODO
 
--[] DispatchQueue abstraction
--[] Flush 
--[] Rotating endpoint
--[] Support sending logs via email
+- [ ] DispatchQueue abstraction
+- [ ] Flush 
+- [ ] Rotating endpoint
+- [ ] Support sending logs via email
 
