@@ -1,10 +1,9 @@
-#  Urolog
-
 Urolog is a true object-oriented logging framework for iOS and MacOS platforms.
-Also Urolog is the simplest and easy to extend solution.**Elegant Objects** principles 
+Also Urolog is simple and easy to extend solution.[Elegant Objects](https://www.elegantobjects.org/) 
+principles 
 are respected here. 
 
-The framework support console and file logging, you can define your own endpoints easily.
+The framework support console and file logging, you can define your own endpoints too.
 
 The project is insiperd by [LogKit](https://github.com/logkit/logkit)
 
