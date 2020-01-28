@@ -65,7 +65,7 @@ private extension LogFileAtPath
     func createFile(_ path: String)
     {
         FileManager.default.createFile(
-            atPath: url.path
+            atPath: path
             , contents: nil
             , attributes: nil
         )
