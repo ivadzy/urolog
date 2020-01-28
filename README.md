@@ -23,12 +23,11 @@ if let fileEndpoint =
         , file: file
     )
 {
-    Urolog(
-        endpoints: 
-            [
-                ConsoleEndpoint(format: DetailedFormat())
-                , fileEndpoint
-            ]
+    Urolog(endpoints: 
+        [
+            ConsoleEndpoint(format: DetailedFormat())
+            , fileEndpoint
+        ]
     )
 }
 ```
