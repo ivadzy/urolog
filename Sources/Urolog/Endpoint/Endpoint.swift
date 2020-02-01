@@ -11,6 +11,7 @@ import Foundation
 
 public protocol Endpoint
 {
+    // TODO: tinker with getters. Tests? see AsyncFileEndpoint comments
     var minimalSeverity: Severity { get }
     var format: Format { get }
     var writer: Writer { get }

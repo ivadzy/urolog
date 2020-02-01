@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// TODO: https://blog.g4s8.wtf/fully-encapsulated/
 public struct Context
 {
     public let severity: Severity

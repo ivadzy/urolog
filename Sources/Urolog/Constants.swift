@@ -10,5 +10,6 @@ import Foundation
 
 struct Constants
 {
+    // TODO: rename
     static let blankFiller = "-"
 }

@@ -20,8 +20,8 @@ public final class AsyncFileEndpoint: Endpoint
     
     
     public required init(
-        minimalSeverity: Severity = .debug
-        , format: Format = DefaultFormat()
+        minimalSeverity: Severity = .debug // TODO: make constants 👇
+        , format: Format = DefaultFormat() // see https://connascence.io/value.html, see Endpoint protocol for alternative approach
         , writer: Writer
         , queue: DispatchQueue
     ) throws
@@ -36,7 +36,7 @@ public final class AsyncFileEndpoint: Endpoint
                 minimalSeverity: minimalSeverity
                 , format: format
                 , writer: self.writer
-        )
+            )
     }
     
     
