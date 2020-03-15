@@ -8,11 +8,8 @@
 
 import Foundation
 
-// TODO: better approach to test FS?
+
 public protocol FileAtPath
 {
-    init(_ url: URL)
-    init(_ path: String)
-    
     func fileHandle() throws -> FileHandle
 }

@@ -3,13 +3,11 @@ import Foundation
 
 public final class Urolog
 {
-    public static let defaultEndpoint =
-        ConsoleEndpoint.self
-    
-    // MARK: - Initialization
+    // MARK: - Initialisation
     private let endpoints: [Endpoint]
+    
     public init(
-        endpoints: [Endpoint] = [Urolog.defaultEndpoint.init()]
+        endpoints: [Endpoint] = [EndConsole(minimalSeverity: .debug)]
     )
     {
         self.endpoints = endpoints
@@ -23,94 +21,82 @@ public final class Urolog
 public extension Urolog
 {
     func debug(
-          _ message: String
+        _ message: String
         , _ file: String = #file
         , _ line: Int = #line
         , _ function: String = #function
     )
     {
-        let context =
-            Context(
-                  severity: .debug
+        send(
+            event(
+                severity: .debug
                 , message: message
-                , date: Date()
-                , lineNumber: line
-                , functionName: function
-                , filePath: file
-                , threadName: Thread.current.name ?? Constants.blankFiller
-                , isMainThread: Thread.isMainThread
+                , file: file
+                , line: line
+                , function: function
             )
-            
-        send(context, endpoints: endpoints)
+            , endpoints: endpoints
+        )
     }
     
     
     func info(
-          _ message: String
+        _ message: String
         , _ file: String = #file
-        ,  _ line: Int = #line
+        , _ line: Int = #line
         , _ function: String = #function
     )
     {
-        let context =
-            Context(
-                  severity: .info
+        send(
+            event(
+                severity: .info
                 , message: message
-                , date: Date()
-                , lineNumber: line
-                , functionName: function
-                , filePath: file
-                , threadName: Thread.current.name ?? Constants.blankFiller
-                , isMainThread: Thread.isMainThread
+                , file: file
+                , line: line
+                , function: function
             )
-        
-        send(context, endpoints: endpoints)
+            , endpoints: endpoints
+        )
     }
     
     
     func warn(
-          _ message: String
+        _ message: String
         , _ file: String = #file
-        ,  _ line: Int = #line
+        , _ line: Int = #line
         , _ function: String = #function
     )
     {
-        let context =
-            Context(
-                  severity: .warning
+        send(
+            event(
+                severity: .warning
                 , message: message
-                , date: Date()
-                , lineNumber: line
-                , functionName: function
-                , filePath: file
-                , threadName: Thread.current.name ?? Constants.blankFiller
-                , isMainThread: Thread.isMainThread
+                , file: file
+                , line: line
+                , function: function
             )
-            
-        send(context, endpoints: endpoints)
+            , endpoints: endpoints
+        )
     }
     
     
     func error(
-          _ message: String
+        _ message: String
         , _ file: String = #file
-        ,  _ line: Int = #line
+        , _ line: Int = #line
         , _ function: String = #function
     )
     {
-        let context =
-            Context(
-                  severity: .error
+        send(
+            event(
+                severity: .error
                 , message: message
-                , date: Date()
-                , lineNumber: line
-                , functionName: function
-                , filePath: file
-                , threadName: Thread.current.name ?? Constants.blankFiller
-                , isMainThread: Thread.isMainThread
+                , file: file
+                , line: line
+                , function: function
             )
-            
-        send(context, endpoints: endpoints)
+            , endpoints: endpoints
+        )
     }
 }
 
@@ -120,11 +106,37 @@ public extension Urolog
 // MARK: - Private
 private extension Urolog
 {
-    func send(
-        _ context: Context
-        , endpoints: [Endpoint]
+    func event(
+        severity: Severity
+        , message: String
+        , file: String
+        , line: Int
+        , function: String
     )
+        -> Event
     {
-        endpoints.forEach({ $0.send(context) })
+        let context =
+            Context(
+                date: .init()
+                , lineNumber: line
+                , functionName: function
+                , filePath: file
+                , threadName: Thread.current.name ?? ""
+                , isMainThread: Thread.current.isMainThread
+        )
+        
+        return Event(
+            severity: severity
+            , message: message
+            , context: context
+        )
+    }
+    
+    
+    func send(_ event: Event, endpoints: [Endpoint])
+    {
+        endpoints.forEach {
+            event.send(to: $0, with: $0.preferredFormat)
+        }
     }
 }

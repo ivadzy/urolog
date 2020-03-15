@@ -9,7 +9,7 @@
 import Foundation
 
 
-public final class AsyncFileWriter: Writer
+public final class TsAsyncFile: TextStream
 {
     // MARK: - Initialization
     private let queue: DispatchQueue
@@ -18,7 +18,7 @@ public final class AsyncFileWriter: Writer
         , queue: DispatchQueue
     )
     {
-        self.fileWriter = FileWriter(handle: handle)
+        self.fileWriter = TsFile(handle: handle)
         self.queue = queue
     }
     
@@ -26,14 +26,14 @@ public final class AsyncFileWriter: Writer
     
     
     // MARK: - Private
-    private let fileWriter: FileWriter
+    private let fileWriter: TsFile
 }
 
 
 
 
 // MARK: - Public
-extension AsyncFileWriter
+extension TsAsyncFile
 {
     // MARK: Writer
     public func write(_ entry: String)

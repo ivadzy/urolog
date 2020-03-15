@@ -13,6 +13,7 @@ public final class LogFileAtPath: FileAtPath
 {
     // MARK: - Initialization
     private let url: URL
+    
     public init(_ url: URL)
     {
         self.url = url
@@ -21,9 +22,7 @@ public final class LogFileAtPath: FileAtPath
     
     public convenience init(_ path: String)
     {
-        self.init(
-            URL(fileURLWithPath: path)
-        )
+        self.init(URL(fileURLWithPath: path))
     }
 }
 
@@ -36,6 +35,7 @@ public extension LogFileAtPath
     func fileHandle() throws -> FileHandle
     {
         try prepareFile(at: url)
+        
         return try FileHandle(forUpdating: url)
     }
 }
@@ -48,15 +48,12 @@ private extension LogFileAtPath
 {
     func prepareFile(at url: URL) throws
     {
-        let path =
-            url.path
+        let path = url.path
         
-        if !fileExists(at: path)
-        {
+        if !fileExists(at: path) {
             createFile(path)
         }
-        else if !fileIsWritable(at: path)
-        {
+        else if !fileIsWritable(at: path) {
             throw IOError.pathIsNotWritable
         }
     }

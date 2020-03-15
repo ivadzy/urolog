@@ -9,7 +9,7 @@
 import Foundation
 
 
-public final class FileWriter: Writer
+public final class TsFile: TextStream
 {
     // MARK: - Initialization
     private let fileHandle: FileHandle
@@ -23,7 +23,7 @@ public final class FileWriter: Writer
 
 
 // MARK: - Public
-extension FileWriter
+extension TsFile
 {
     // MARK: Writer
     public func write(_ entry: String)
@@ -40,7 +40,7 @@ extension FileWriter
 
 
 // MARK: - Private
-private extension FileWriter
+private extension TsFile
 {
     func data(from entry: String) -> Data?
     {

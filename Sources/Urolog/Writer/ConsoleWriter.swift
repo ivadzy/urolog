@@ -9,11 +9,7 @@
 import Foundation
 
 
-public typealias ConsoleWriter =
-    StandardOutputWriter
-
-
-public final class StandardOutputWriter: Writer
+public final class TsConsole: TextStream
 {
     // MARK: - Initialization
     public init() {}
@@ -30,7 +26,7 @@ public final class StandardOutputWriter: Writer
 
 
 // MARK: - Public
-public extension StandardOutputWriter
+public extension TsConsole
 {
     // MARK: Writer
     func write(_ entry: String)

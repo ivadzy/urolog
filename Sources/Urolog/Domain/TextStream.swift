@@ -9,7 +9,7 @@
 import Foundation
 
 
-public protocol Writer: TextOutputStream
+public protocol TextStream: TextOutputStream
 {
-    func write(_ entry: String)
+    func write(_ text: String)
 }
