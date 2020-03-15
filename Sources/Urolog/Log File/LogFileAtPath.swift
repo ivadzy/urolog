@@ -1,17 +1,25 @@
 //
-//  LogFileAtPath.swift
-//  Urolog
+//  ╔══════════╗
+//  ║  Urolog    True OOP logging framework
+//  ╚══════════╝
 //
-//  Created by Ivan on 9/1/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
 
 
-public final class LogFileAtPath: FileAtPath
+extension LogFile
 {
-    // MARK: - Initialization
+    public enum IOError: Error
+    {
+        case pathIsNotWritable
+    }
+}
+
+
+
+
+public final class LogFile: FileWithHandle
+{
+    // MARK: - Initialisation
     private let url: URL
     
     public init(_ url: URL)
@@ -30,13 +38,21 @@ public final class LogFileAtPath: FileAtPath
 
 
 // MARK: - Public
-public extension LogFileAtPath
+public extension LogFile
 {
-    func fileHandle() throws -> FileHandle
+    func createFileHandle() throws
     {
-        try prepareFile(at: url)
+        let path = url.path
         
-        return try FileHandle(forUpdating: url)
+        createFileIfNeeded(at: path)
+        
+        if !fileIsWritable(at: path) {
+            throw IOError.pathIsNotWritable
+        }
+    }
+    
+    func fileHandle() throws -> FileHandle {
+        try FileHandle(forUpdating: url)
     }
 }
 
@@ -44,17 +60,12 @@ public extension LogFileAtPath
 
 
 // MARK: - Private
-private extension LogFileAtPath
+private extension LogFile
 {
-    func prepareFile(at url: URL) throws
+    func createFileIfNeeded(at path: String)
     {
-        let path = url.path
-        
         if !fileExists(at: path) {
             createFile(path)
-        }
-        else if !fileIsWritable(at: path) {
-            throw IOError.pathIsNotWritable
         }
     }
     
@@ -78,17 +89,5 @@ private extension LogFileAtPath
     func fileIsWritable(at path: String) -> Bool
     {
         FileManager.default.isWritableFile(atPath: path)
-    }
-}
-
-
-
-
-// MARK: -
-extension LogFileAtPath
-{
-    public enum IOError: Error
-    {
-        case pathIsNotWritable
     }
 }

@@ -1,5 +1,5 @@
 //
-//  FileEndpoint.swift
+//  EndBasic.swift
 //  Urolog
 //
 //  Created by Ivan on 8/31/19.
@@ -9,32 +9,39 @@
 import Foundation
 
 
-public final class EndFile: Endpoint
+public final class EndBasic: Endpoint
 {
-    // MARK: - Initialization
+    // MARK: - Initialisation
     private let minimalSeverity: Severity
     private let textStream: TextStream
     
     public required init(
           minimalSeverity: Severity = .debug
-        , writer: TextStream
-    ) throws
+        , textStream: TextStream
+    )
     {
         self.minimalSeverity = minimalSeverity
-        self.textStream = writer
+        self.textStream = textStream
     }
     
-    
-    
+
+
+
     // MARK: - Public
-    public var preferredFormat:Format<String> = FrDefault()
+    public var preferredFormat: Format<String> = FrDefault()
+    
+
+
+
+    // MARK: - Private
+    var muted: Bool = false
 }
 
 
 
 
 // MARK: - Public
-public extension EndFile
+public extension EndBasic
 {
     // MARK: Endpoint
     func acceptsSeverity(_ severity: Severity) -> Bool
@@ -45,6 +52,20 @@ public extension EndFile
     
     func recieve(entry: String)
     {
-        textStream.write(entry)
+        if !muted {
+            textStream.write(entry)
+        }
+    }
+    
+    
+    func mute()
+    {
+        muted = true
+    }
+    
+    
+    func unmute()
+    {
+        muted = false
     }
 }

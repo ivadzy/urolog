@@ -1,5 +1,5 @@
 //
-//  AsyncWriter.swift
+//  TsAsyncFile.swift
 //  Urolog
 //
 //  Created by Ivan on 8/31/19.
@@ -11,14 +11,12 @@ import Foundation
 
 public final class TsAsyncFile: TextStream
 {
-    // MARK: - Initialization
+    // MARK: - Initialisation
     private let queue: DispatchQueue
-    init(
-        handle: FileHandle
-        , queue: DispatchQueue
-    )
+    
+    init(handle: FileHandle, queue: DispatchQueue)
     {
-        self.fileWriter = TsFile(handle: handle)
+        self.origin = TsFile(handle: handle)
         self.queue = queue
     }
     
@@ -26,7 +24,7 @@ public final class TsAsyncFile: TextStream
     
     
     // MARK: - Private
-    private let fileWriter: TsFile
+    private let origin: TsFile
 }
 
 
@@ -35,11 +33,10 @@ public final class TsAsyncFile: TextStream
 // MARK: - Public
 extension TsAsyncFile
 {
-    // MARK: Writer
     public func write(_ entry: String)
     {
-        queue.async { [fileWriter] in
-            fileWriter.write(entry)
+        queue.async { [origin] in
+            origin.write(entry)
         }
     }
 }

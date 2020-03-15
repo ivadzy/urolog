@@ -11,20 +11,26 @@ import Foundation
 
 public final class EndConsole: Endpoint
 {
-    // MARK: - Initialization
-    private let minimalSeverity: Severity
-    private let textStream: TextStream = TsConsole()
-    
+    // MARK: - Initialisation
     public required init(minimalSeverity: Severity = .debug)
     {
-        self.minimalSeverity = minimalSeverity
+        self.origin =
+            EndBasic(
+                minimalSeverity: minimalSeverity
+                , textStream: TsConsole()
+            )
     }
     
     
     
     
     // MARK: - Public
-    public var preferredFormat:Format<String> = FrDefault()
+    public var preferredFormat: Format<String> = FrDefault()
+    
+    
+    
+    // MARK: - Private
+    private let origin: EndBasic
 }
 
 
@@ -36,13 +42,25 @@ public extension EndConsole
     // MARK: Endpoint
     func acceptsSeverity(_ severity: Severity) -> Bool
     {
-        minimalSeverity <= severity
+        origin.acceptsSeverity(severity)
     }
     
     
     func recieve(entry: String)
     {
-        textStream.write(entry)
+        origin.recieve(entry: entry)
+    }
+    
+    
+    func mute()
+    {
+        origin.mute()
+    }
+    
+    
+    func unmute()
+    {
+        origin.unmute()
     }
 }
 

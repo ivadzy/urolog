@@ -1,5 +1,5 @@
 //
-//  FileWriter.swift
+//  TsFile.swift
 //  Urolog
 //
 //  Created by Ivan on 8/31/19.
@@ -11,8 +11,9 @@ import Foundation
 
 public final class TsFile: TextStream
 {
-    // MARK: - Initialization
+    // MARK: - Initialisation
     private let fileHandle: FileHandle
+    
     init(handle: FileHandle)
     {
         self.fileHandle = handle
@@ -25,11 +26,9 @@ public final class TsFile: TextStream
 // MARK: - Public
 extension TsFile
 {
-    // MARK: Writer
     public func write(_ entry: String)
     {
-        if let data = data(from: entry)
-        {
+        if let data = data(from: entry) {
             fileHandle.seekToEndOfFile()
             fileHandle.write(data)
         }
