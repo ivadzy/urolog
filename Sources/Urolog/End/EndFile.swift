@@ -19,7 +19,6 @@ public final class EndFile: Endpoint
     
     public init(minimalSeverity: Severity, file: FileWithHandle) throws
     {
-        try file.createFileHandle()
         let handle = try file.fileHandle()
         let textStream = TsFile(handle: handle)
         

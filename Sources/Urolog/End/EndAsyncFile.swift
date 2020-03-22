@@ -28,7 +28,6 @@ public final class EndAsyncFile: Endpoint
         , queue: DispatchQueue
     ) throws
     {
-        try file.createFileHandle()
         let handle = try file.fileHandle()
         let textStream = TsAsyncFile(handle: handle, queue: queue)
         

@@ -40,19 +40,10 @@ public final class LogFile: FileWithHandle
 // MARK: - Public
 public extension LogFile
 {
-    func createFileHandle() throws
-    {
-        let path = url.path
-        
-        createFileIfNeeded(at: path)
-        
-        if !fileIsWritable(at: path) {
-            throw IOError.pathIsNotWritable
-        }
-    }
-    
     func fileHandle() throws -> FileHandle {
-        try FileHandle(forUpdating: url)
+        try createFile(url.path)
+        
+        return try FileHandle(forUpdating: url)
     }
 }
 
@@ -62,10 +53,16 @@ public extension LogFile
 // MARK: - Private
 private extension LogFile
 {
-    func createFileIfNeeded(at path: String)
+    func createFileHandle() throws
     {
+        let path = url.path
+        
         if !fileExists(at: path) {
             createFile(path)
+        }
+        
+        if !fileIsWritable(at: path) {
+            throw IOError.pathIsNotWritable
         }
     }
     
