@@ -15,6 +15,7 @@ public final class EndAsyncFile: Endpoint
     // MARK: - Public
     public var preferredFormat: Format<String> = FmtDefault()
     
+    public var identifier: String = "com.urolog.endpoint.async"
     
     
     

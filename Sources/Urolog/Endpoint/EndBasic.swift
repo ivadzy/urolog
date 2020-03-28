@@ -22,6 +22,7 @@ public final class EndBasic: Endpoint
     // MARK: - Public
     public var preferredFormat: Format<String> = FmtDefault()
     
+    public var identifier: String = "com.urolog.endpoint.basic"
 
 
 

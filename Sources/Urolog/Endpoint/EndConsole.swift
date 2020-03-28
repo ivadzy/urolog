@@ -3,6 +3,7 @@ import Foundation
 
 public final class EndConsole: Endpoint
 {
+    
     // MARK: - Initialisation
     public required init(origin: Endpoint)
     {
@@ -15,8 +16,10 @@ public final class EndConsole: Endpoint
     // MARK: - Public
     public var preferredFormat: Format<String> = FmtDefault()
     
+    public var identifier: String = "com.urolog.endpoint.console"
     
-    
+
+
     
     // MARK: - Private
     private let origin: Endpoint
