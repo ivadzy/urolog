@@ -1,15 +1,7 @@
-//
-//  DetailedFormat.swift
-//  Urolog
-//
-//  Created by Ivan on 9/1/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
 
 
-public final class FrDetailed: Format<String>
+public final class FmtDetailed: Format<String>
 {
     override public func format(
         severity: Severity
@@ -20,10 +12,23 @@ public final class FrDetailed: Format<String>
     {
         return [
             "\(context.date)"
-            , "[\(severity)]"
+            , "[\(severity.description)]"
             , "[\(context.filePath)]"
             , "[\(context.functionName)]"
             , "\(message)"
             ].joined(separator: " - ") + "\n"
+    }
+    
+    override public func format(
+        date: Date
+        , lineNumber: Int
+        , functionName: String
+        , filePath: String
+        , threadName: String
+        , isMainThread: Bool
+    )
+        -> String
+    {
+        fatalError("Not implemented")
     }
 }

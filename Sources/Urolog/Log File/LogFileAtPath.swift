@@ -1,23 +1,17 @@
-//
-//  ╔══════════╗
-//  ║  Urolog    True OOP logging framework
-//  ╚══════════╝
-//
 import Foundation
 
 
-extension LogFile
+extension LogFileAtPath
 {
     public enum IOError: Error
     {
+        case unableToCreateFile
         case pathIsNotWritable
     }
 }
 
 
-
-
-public final class LogFile: FileWithHandle
+public final class LogFileAtPath: FileWithHandle
 {
     // MARK: - Initialisation
     private let url: URL
@@ -38,11 +32,12 @@ public final class LogFile: FileWithHandle
 
 
 // MARK: - Public
-public extension LogFile
+public extension LogFileAtPath
 {
+    // MARK: FileWithHandle
     func fileHandle() throws -> FileHandle {
-        try createFile(url.path)
-        
+        try createFileHandle(with: url)
+
         return try FileHandle(forUpdating: url)
     }
 }
@@ -51,14 +46,14 @@ public extension LogFile
 
 
 // MARK: - Private
-private extension LogFile
+private extension LogFileAtPath
 {
-    func createFileHandle() throws
+    func createFileHandle(with url: URL) throws
     {
         let path = url.path
         
-        if !fileExists(at: path) {
-            createFile(path)
+        if !fileExists(at: path), !createFile(path) {
+            throw IOError.unableToCreateFile
         }
         
         if !fileIsWritable(at: path) {
@@ -67,7 +62,7 @@ private extension LogFile
     }
     
     
-    func createFile(_ path: String)
+    func createFile(_ path: String) -> Bool
     {
         FileManager.default.createFile(
             atPath: path

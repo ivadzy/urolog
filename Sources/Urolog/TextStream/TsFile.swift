@@ -1,11 +1,3 @@
-//
-//  TsFile.swift
-//  Urolog
-//
-//  Created by Ivan on 8/31/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
 
 
@@ -26,6 +18,7 @@ public final class TsFile: TextStream
 // MARK: - Public
 extension TsFile
 {
+    // MARK: TextStream
     public func write(_ entry: String)
     {
         if let data = data(from: entry) {

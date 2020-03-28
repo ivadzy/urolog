@@ -1,11 +1,3 @@
-//
-//  EndBasic.swift
-//  Urolog
-//
-//  Created by Ivan on 8/31/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
 
 
@@ -15,7 +7,7 @@ public final class EndBasic: Endpoint
     private let minimalSeverity: Severity
     private let textStream: TextStream
     
-    public required init(
+    public init(
           minimalSeverity: Severity = .debug
         , textStream: TextStream
     )
@@ -28,7 +20,7 @@ public final class EndBasic: Endpoint
 
 
     // MARK: - Public
-    public var preferredFormat: Format<String> = FrDefault()
+    public var preferredFormat: Format<String> = FmtDefault()
     
 
 
@@ -43,6 +35,22 @@ public final class EndBasic: Endpoint
 // MARK: - Public
 public extension EndBasic
 {
+    // MARK: Intialisation
+    convenience init(
+        minimalSeverity: Severity = .debug
+        , file: FileWithHandle
+    ) throws
+    {
+        let handle = try file.fileHandle()
+        let textStream = TsFile(handle: handle)
+        
+        self.init(
+            minimalSeverity: minimalSeverity
+            , textStream: textStream
+        )
+    }
+    
+        
     // MARK: Endpoint
     func acceptsSeverity(_ severity: Severity) -> Bool
     {

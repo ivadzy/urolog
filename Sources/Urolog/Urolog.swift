@@ -35,7 +35,7 @@ public extension Urolog
                 , line: line
                 , function: function
             )
-            , endpoints: endpoints
+            , to: endpoints
         )
     }
     
@@ -55,7 +55,7 @@ public extension Urolog
                 , line: line
                 , function: function
             )
-            , endpoints: endpoints
+            , to: endpoints
         )
     }
     
@@ -75,7 +75,7 @@ public extension Urolog
                 , line: line
                 , function: function
             )
-            , endpoints: endpoints
+            , to: endpoints
         )
     }
     
@@ -95,7 +95,7 @@ public extension Urolog
                 , line: line
                 , function: function
             )
-            , endpoints: endpoints
+            , to: endpoints
         )
     }
 }
@@ -133,10 +133,10 @@ private extension Urolog
     }
     
     
-    func send(_ event: Event, endpoints: [Endpoint])
+    func send(_ event: Event, to endpoints: [Endpoint])
     {
         endpoints.forEach {
-            event.send(to: $0, with: $0.preferredFormat)
+            event.send(to: $0, format: $0.preferredFormat)
         }
     }
 }

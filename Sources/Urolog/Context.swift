@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ivan on 3/15/20.
-//
-
 import Foundation
 
 public struct Context

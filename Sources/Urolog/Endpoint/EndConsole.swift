@@ -1,36 +1,25 @@
-//
-//  StandardOutputEndpoint.swift
-//  Urolog
-//
-//  Created by Ivan on 9/1/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
 
 
 public final class EndConsole: Endpoint
 {
     // MARK: - Initialisation
-    public required init(minimalSeverity: Severity = .debug)
+    public required init(origin: Endpoint)
     {
-        self.origin =
-            EndBasic(
-                minimalSeverity: minimalSeverity
-                , textStream: TsConsole()
-            )
+        self.origin = origin
     }
     
     
     
     
     // MARK: - Public
-    public var preferredFormat: Format<String> = FrDefault()
+    public var preferredFormat: Format<String> = FmtDefault()
+    
     
     
     
     // MARK: - Private
-    private let origin: EndBasic
+    private let origin: Endpoint
 }
 
 
@@ -39,6 +28,18 @@ public final class EndConsole: Endpoint
 // MARK: - Public
 public extension EndConsole
 {
+    // MARK: - Initialisation
+    convenience init(minimalSeverity: Severity = .debug)
+    {
+        self.init(origin:
+            EndBasic(
+                minimalSeverity: minimalSeverity
+                , textStream: TsConsole()
+            )
+        )
+    }
+    
+    
     // MARK: Endpoint
     func acceptsSeverity(_ severity: Severity) -> Bool
     {

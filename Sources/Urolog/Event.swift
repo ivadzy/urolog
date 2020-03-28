@@ -1,14 +1,4 @@
-//
-//  Event.swift
-//  Urolog
-//
-//  Created by Ivan on 8/30/19.
-//  Copyright © 2019 ivadzy. All rights reserved.
-//
-
 import Foundation
-
-
 
 
 public struct Event
@@ -18,7 +8,7 @@ public struct Event
     public let context: Context
     
     
-    func send(to endpoint: Endpoint, with format: Format<String>)
+    func send(to endpoint: Endpoint, format: Format<String>)
     {
         if endpoint.acceptsSeverity(severity) {
             let entry = printed(format)
