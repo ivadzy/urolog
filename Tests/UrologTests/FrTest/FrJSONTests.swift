@@ -2,7 +2,7 @@ import XCTest
 @testable import Urolog
  
  
-final class FrJSONTest: XCTestCase {
+final class FrJSONTests: XCTestCase {
     func testJSONFormat() {
         let format = FmtJSON()
         let context =
