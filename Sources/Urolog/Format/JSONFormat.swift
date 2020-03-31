@@ -1,6 +1,6 @@
 import Foundation
 
-public final class FmtJSON: Format<String>
+public final class JSONFormat: Format<String>
 {
     override public func format(
         severity: Severity

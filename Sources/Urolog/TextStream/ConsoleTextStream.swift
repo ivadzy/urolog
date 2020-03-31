@@ -1,31 +1,29 @@
 import Foundation
 
 
-public final class TsConsole: TextStream
+public final class ConsoleTextStream: TextStream
 {
     // MARK: - Initialisation
-    init(origin: TextStream)
+    private let origin: TextStream
+    
+    init(_ origin: TextStream)
     {
         self.origin = origin
     }
-    
-    
-    
-    
-    // MARK: - Private
-    private let origin: TextStream
 }
 
 
 
 
 // MARK: - Public
-public extension TsConsole
+public extension ConsoleTextStream
 {
     // MARK: Initilisation
     convenience init()
     {
-        self.init(origin: TsFile(handle: .standardError))
+        self.init(
+            FileTextStream(handle: .standardError)
+        )
     }
     
     

@@ -1,10 +1,11 @@
 import Foundation
 
 
-public final class EndBasic: Endpoint
+public final class BasicEndpoint: Endpoint
 {
     // MARK: - Initialisation
     private let minimalSeverity: Severity
+    
     private let textStream: TextStream
     
     public init(
@@ -20,9 +21,10 @@ public final class EndBasic: Endpoint
 
 
     // MARK: - Public
-    public var preferredFormat: Format<String> = FmtDefault()
+    public var preferredFormat: Format<String> = DefaultFormat()
     
     public var identifier: String = "com.urolog.endpoint.basic"
+
 
 
 
@@ -34,19 +36,20 @@ public final class EndBasic: Endpoint
 
 
 // MARK: - Public
-public extension EndBasic
+public extension BasicEndpoint
 {
     // MARK: Intialisation
     convenience init(
-        minimalSeverity: Severity = .debug
+          minimalSeverity: Severity = .debug
         , file: FileWithHandle
-    ) throws
+    )
+        throws
     {
         let handle = try file.fileHandle()
-        let textStream = TsFile(handle: handle)
+        let textStream = FileTextStream(handle: handle)
         
         self.init(
-            minimalSeverity: minimalSeverity
+              minimalSeverity: minimalSeverity
             , textStream: textStream
         )
     }

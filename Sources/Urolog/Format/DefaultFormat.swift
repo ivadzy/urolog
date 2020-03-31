@@ -1,7 +1,7 @@
 import Foundation
 
 
-public final class FmtDefault: Format<String>
+public final class DefaultFormat: Format<String>
 {
     override public func format(
         severity: Severity

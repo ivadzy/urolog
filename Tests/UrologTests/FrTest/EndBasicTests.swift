@@ -18,12 +18,12 @@ final class EndBasicTest: XCTestCase
         let ts = TsTest()
         ts.expectation = expectation
         
-        let end = EndBasic(minimalSeverity: .info, textStream: ts)
+        let end = BasicEndpoint(minimalSeverity: .info, textStream: ts)
         
         let event =
             Event.test(minimalSeverity: .debug)
         
-        event.send(to: end, format: FmtDefault())
+        event.send(to: end, format: DefaultFormat())
         
         wait(for: [expectation], timeout: 0.1)
     }
@@ -42,12 +42,12 @@ final class EndBasicTest: XCTestCase
         let ts = TsTest()
         ts.expectation = expectation
         
-        let end = EndBasic(minimalSeverity: .info, textStream: ts)
+        let end = BasicEndpoint(minimalSeverity: .info, textStream: ts)
         
         let event =
             Event.test(minimalSeverity: .info)
         
-        event.send(to: end, format: FmtDefault())
+        event.send(to: end, format: DefaultFormat())
         
         wait(for: [expectation], timeout: 0.1)
     }
@@ -66,13 +66,13 @@ final class EndBasicTest: XCTestCase
         let ts = TsTest()
         ts.expectation = expectation
         
-        let end = EndBasic(minimalSeverity: .info, textStream: ts)
+        let end = BasicEndpoint(minimalSeverity: .info, textStream: ts)
         
         let event =
             Event.test(minimalSeverity: .info)
                 
         end.mute()
-        event.send(to: end, format: FmtDefault())
+        event.send(to: end, format: DefaultFormat())
         
         wait(for: [expectation], timeout: 0.1)
     }
@@ -90,15 +90,15 @@ final class EndBasicTest: XCTestCase
         let ts = TsTest()
         ts.expectation = expectation
         
-        let end = EndBasic(minimalSeverity: .info, textStream: ts)
+        let end = BasicEndpoint(minimalSeverity: .info, textStream: ts)
         
         let event =
             Event.test(minimalSeverity: .info)
         
         end.mute()
-        event.send(to: end, format: FmtDefault())
+        event.send(to: end, format: DefaultFormat())
         end.unmute()
-        event.send(to: end, format: FmtDefault())
+        event.send(to: end, format: DefaultFormat())
         
         wait(for: [expectation], timeout: 0.1)
     }

@@ -9,15 +9,15 @@ The project is insiperd by [LogKit](https://github.com/logkit/logkit)
 
 ```
 Urolog(
-    endpoints: [EndConsole()]
+    endpoints: [ConsoleEndpoint()]
 )
 ```
 
 More complex example with multiple endpoints:
 ```
 let file = LogFileAtPath(logFileURL)
-let fileEndpoint = try! EndAsyncFile(file: file)
-fileEndpoint.preferredFormat = FmtDetailed()
+let fileEndpoint = try! AsyncFileEndpoint(file: file)
+fileEndpoint.preferredFormat = DetailedFormat()
 
 Urolog(endpoints: 
     [

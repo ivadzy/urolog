@@ -1,7 +1,7 @@
 import Foundation
 
 
-public final class FmtDetailed: Format<String>
+public final class DetailedFormat: Format<String>
 {
     override public func format(
         severity: Severity

@@ -4,7 +4,7 @@ import XCTest
  
 final class FrJSONTests: XCTestCase {
     func testJSONFormat() {
-        let format = FmtJSON()
+        let format = JSONFormat()
         let context =
             Context(
                 date: Date(timeIntervalSince1970: 1337)

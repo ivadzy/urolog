@@ -1,10 +1,12 @@
 import Foundation
 
 
-public final class EndAsyncFile: Endpoint
+public final class AsyncFileEndpoint: Endpoint
 {
     // MARK: - Initialisation
-    init(origin: Endpoint) throws
+    private let origin: Endpoint
+    
+    init(_ origin: Endpoint) throws
     {
         self.origin = origin
     }
@@ -13,36 +15,31 @@ public final class EndAsyncFile: Endpoint
     
     
     // MARK: - Public
-    public var preferredFormat: Format<String> = FmtDefault()
+    public var preferredFormat: Format<String> = DefaultFormat()
     
     public var identifier: String = "com.urolog.endpoint.async"
-    
-    
-    
-    // MARK: - Private
-    private let origin: Endpoint
 }
 
 
 
 
 // MARK: - Public
-public extension EndAsyncFile
+public extension AsyncFileEndpoint
 {
     // MARK: Initialisation
     convenience init(
-        minimalSeverity: Severity
+          minimalSeverity: Severity
         , file: FileWithHandle
         , queue: DispatchQueue
     )
         throws
     {
         let handle = try file.fileHandle()
-        let textStream = TsAsyncFile(handle: handle, queue: queue)
+        let textStream = AsyncFileTextStream(handle: handle, queue: queue)
         
-        try self.init(origin:
-            EndBasic(
-                minimalSeverity: minimalSeverity
+        try self.init(
+            BasicEndpoint(
+                  minimalSeverity: minimalSeverity
                 , textStream: textStream
             )
         )
@@ -50,13 +47,13 @@ public extension EndAsyncFile
     
     
     convenience init(
-        minimalSeverity: Severity = .debug
+          minimalSeverity: Severity = .debug
         , file: FileWithHandle
     )
         throws
     {
         try self.init(
-            minimalSeverity: minimalSeverity
+              minimalSeverity: minimalSeverity
             , file: file
             , queue:
                 DispatchQueue(

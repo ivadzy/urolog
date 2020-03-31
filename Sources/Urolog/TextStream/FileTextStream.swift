@@ -1,7 +1,7 @@
 import Foundation
 
 
-public final class TsFile: TextStream
+public final class FileTextStream: TextStream
 {
     // MARK: - Initialisation
     private let fileHandle: FileHandle
@@ -16,7 +16,7 @@ public final class TsFile: TextStream
 
 
 // MARK: - Public
-extension TsFile
+extension FileTextStream
 {
     // MARK: TextStream
     public func write(_ entry: String)
@@ -32,7 +32,7 @@ extension TsFile
 
 
 // MARK: - Private
-private extension TsFile
+private extension FileTextStream
 {
     func data(from entry: String) -> Data?
     {

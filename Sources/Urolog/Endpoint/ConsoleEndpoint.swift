@@ -1,11 +1,12 @@
 import Foundation
 
 
-public final class EndConsole: Endpoint
+public final class ConsoleEndpoint: Endpoint
 {
-    
     // MARK: - Initialisation
-    public required init(origin: Endpoint)
+    private let origin: Endpoint
+    
+    public required init(_ origin: Endpoint)
     {
         self.origin = origin
     }
@@ -14,30 +15,24 @@ public final class EndConsole: Endpoint
     
     
     // MARK: - Public
-    public var preferredFormat: Format<String> = FmtDefault()
+    public var preferredFormat: Format<String> = DefaultFormat()
     
     public var identifier: String = "com.urolog.endpoint.console"
-    
-
-
-    
-    // MARK: - Private
-    private let origin: Endpoint
 }
 
 
 
 
 // MARK: - Public
-public extension EndConsole
+public extension ConsoleEndpoint
 {
     // MARK: - Initialisation
     convenience init(minimalSeverity: Severity = .debug)
     {
-        self.init(origin:
-            EndBasic(
-                minimalSeverity: minimalSeverity
-                , textStream: TsConsole()
+        self.init(
+            BasicEndpoint(
+                  minimalSeverity: minimalSeverity
+                , textStream: ConsoleTextStream()
             )
         )
     }

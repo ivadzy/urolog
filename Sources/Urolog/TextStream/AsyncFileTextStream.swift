@@ -1,9 +1,11 @@
 import Foundation
 
 
-public final class TsAsyncFile: TextStream
+public final class AsyncFileTextStream: TextStream
 {
     // MARK: - Initialisation
+    private let origin: TextStream
+    
     private let queue: DispatchQueue
     
     init(origin: TextStream, queue: DispatchQueue)
@@ -11,25 +13,21 @@ public final class TsAsyncFile: TextStream
         self.origin = origin
         self.queue = queue
     }
-    
-    
-
-
-    // MARK: - Private
-    private let origin: TextStream
 }
 
 
 
 
 // MARK: - Public
-public extension TsAsyncFile
+public extension AsyncFileTextStream
 {
     // MARK: Initilisation
-    
     convenience init(handle: FileHandle, queue: DispatchQueue)
     {
-        self.init(origin: TsFile(handle: handle), queue: queue)
+        self.init(
+              origin: FileTextStream(handle: handle)
+            , queue: queue
+        )
     }
     
     

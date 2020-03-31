@@ -7,7 +7,7 @@ public final class Urolog
     public let endpoints: [Endpoint]
     
     public init(
-        endpoints: [Endpoint] = [EndConsole(minimalSeverity: .debug)]
+        endpoints: [Endpoint] = [ConsoleEndpoint()]
     )
     {
         self.endpoints = endpoints
