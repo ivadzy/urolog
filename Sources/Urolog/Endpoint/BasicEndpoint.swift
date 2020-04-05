@@ -80,4 +80,27 @@ public extension BasicEndpoint
     {
         muted = false
     }
+    
+    
+    func with(format: Format<String>) -> Endpoint
+    {
+        let end = BasicEndpoint(minimalSeverity: minimalSeverity, textStream: textStream)
+        end.preferredFormat = format
+        
+        return end
+    }
+    
+    
+    func with(identifier: String) -> Endpoint
+    {
+        let end = BasicEndpoint(minimalSeverity: minimalSeverity, textStream: textStream)
+        end.identifier = identifier
+        
+        return end
+    }
+    
+    func with(minimalSeverity: Severity) -> Endpoint
+    {
+        BasicEndpoint(minimalSeverity: minimalSeverity, textStream: textStream)
+    }
 }

@@ -61,6 +61,29 @@ public extension ConsoleEndpoint
     {
         origin.unmute()
     }
+    
+    
+    func with(format: Format<String>) -> Endpoint
+    {
+        let end = ConsoleEndpoint(origin)
+        end.preferredFormat = format
+        
+        return end
+    }
+    
+    func with(identifier: String) -> Endpoint
+    {
+        let end = ConsoleEndpoint(origin)
+        end.identifier = identifier
+        
+        return end
+    }
+    
+    
+    func with(minimalSeverity: Severity) -> Endpoint
+    {
+        ConsoleEndpoint(minimalSeverity: minimalSeverity)
+    }
 }
 
 

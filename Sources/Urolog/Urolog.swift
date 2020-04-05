@@ -4,7 +4,7 @@ import Foundation
 public final class Urolog
 {
     // MARK: - Initialisation
-    public let endpoints: [Endpoint]
+    public var endpoints: [Endpoint]
     
     public init(
         endpoints: [Endpoint] = [ConsoleEndpoint()]

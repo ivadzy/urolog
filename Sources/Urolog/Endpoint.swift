@@ -18,4 +18,11 @@ public protocol Endpoint
     func mute()
     
     func unmute()
+    
+    
+    func with(format: Format<String>) -> Endpoint
+    
+    func with(identifier: String) -> Endpoint
+    
+    func with(minimalSeverity: Severity) -> Endpoint
 }

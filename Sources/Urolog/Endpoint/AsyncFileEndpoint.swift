@@ -6,7 +6,7 @@ public final class AsyncFileEndpoint: Endpoint
     // MARK: - Initialisation
     private let origin: Endpoint
     
-    init(_ origin: Endpoint) throws
+    init(_ origin: Endpoint)
     {
         self.origin = origin
     }
@@ -37,7 +37,7 @@ public extension AsyncFileEndpoint
         let handle = try file.fileHandle()
         let textStream = AsyncFileTextStream(handle: handle, queue: queue)
         
-        try self.init(
+        self.init(
             BasicEndpoint(
                   minimalSeverity: minimalSeverity
                 , textStream: textStream
@@ -86,5 +86,29 @@ public extension AsyncFileEndpoint
     func unmute()
     {
         origin.unmute()
+    }
+    
+    
+    func with(format: Format<String>) -> Endpoint
+    {
+        let end = AsyncFileEndpoint(self.origin)
+        end.preferredFormat = format
+        
+        return end
+    }
+       
+    
+    func with(identifier: String) -> Endpoint
+    {
+        let end = AsyncFileEndpoint(self.origin)
+        end.identifier = identifier
+        
+        return end
+    }
+    
+    
+    func with(minimalSeverity: Severity) -> Endpoint
+    {
+        ConsoleEndpoint(minimalSeverity: minimalSeverity)
     }
 }
