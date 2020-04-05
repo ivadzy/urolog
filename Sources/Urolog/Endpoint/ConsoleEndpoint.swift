@@ -16,8 +16,6 @@ public final class ConsoleEndpoint: Endpoint
     
     // MARK: - Public
     public var preferredFormat: Format<String> = DefaultFormat()
-    
-    public var identifier: String = "com.urolog.endpoint.console"
 }
 
 
@@ -67,14 +65,6 @@ public extension ConsoleEndpoint
     {
         let end = ConsoleEndpoint(origin)
         end.preferredFormat = format
-        
-        return end
-    }
-    
-    func with(identifier: String) -> Endpoint
-    {
-        let end = ConsoleEndpoint(origin)
-        end.identifier = identifier
         
         return end
     }

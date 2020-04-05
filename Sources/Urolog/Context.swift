@@ -2,6 +2,7 @@ import Foundation
 
 public struct Context
 {
+    public let identifier: String
     public let date: Date
     
     public let lineNumber: Int

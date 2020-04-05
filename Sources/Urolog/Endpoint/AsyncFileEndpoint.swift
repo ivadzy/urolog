@@ -96,15 +96,6 @@ public extension AsyncFileEndpoint
         
         return end
     }
-       
-    
-    func with(identifier: String) -> Endpoint
-    {
-        let end = AsyncFileEndpoint(self.origin)
-        end.identifier = identifier
-        
-        return end
-    }
     
     
     func with(minimalSeverity: Severity) -> Endpoint

@@ -4,10 +4,10 @@ import Foundation
 public final class Urolog
 {
     // MARK: - Initialisation
-    public var endpoints: [Endpoint]
+    private var endpoints: [String: Endpoint]
     
     public init(
-        endpoints: [Endpoint] = [ConsoleEndpoint()]
+        endpoints: [String: Endpoint] = ["com.urolog.default" : ConsoleEndpoint()]
     )
     {
         self.endpoints = endpoints
@@ -20,6 +20,23 @@ public final class Urolog
 // MARK: - Public
 public extension Urolog
 {
+    func register(_ endpoint: Endpoint, with identifier: String)
+    {
+        guard endpoints[identifier] != nil
+        else {
+            return
+        }
+        
+        endpoints[identifier] = endpoint
+    }
+    
+    
+    func endpoint(with identifier: String) -> Endpoint?
+    {
+        endpoints[identifier]
+    }
+    
+    
     func debug(
         _ message: String
         , _ file: String = #file
@@ -28,13 +45,11 @@ public extension Urolog
     )
     {
         send(
-            event(
-                severity: .debug
-                , message: message
-                , file: file
-                , line: line
-                , function: function
-            )
+            severity: .debug
+            , message: message
+            , file: file
+            , line: line
+            , function: function
             , to: endpoints
         )
     }
@@ -48,13 +63,11 @@ public extension Urolog
     )
     {
         send(
-            event(
-                severity: .info
-                , message: message
-                , file: file
-                , line: line
-                , function: function
-            )
+            severity: .info
+            , message: message
+            , file: file
+            , line: line
+            , function: function
             , to: endpoints
         )
     }
@@ -68,13 +81,11 @@ public extension Urolog
     )
     {
         send(
-            event(
-                severity: .warning
-                , message: message
-                , file: file
-                , line: line
-                , function: function
-            )
+            severity: .warning
+            , message: message
+            , file: file
+            , line: line
+            , function: function
             , to: endpoints
         )
     }
@@ -88,13 +99,11 @@ public extension Urolog
     )
     {
         send(
-            event(
-                severity: .error
-                , message: message
-                , file: file
-                , line: line
-                , function: function
-            )
+            severity: .error
+            , message: message
+            , file: file
+            , line: line
+            , function: function
             , to: endpoints
         )
     }
@@ -106,37 +115,37 @@ public extension Urolog
 // MARK: - Private
 private extension Urolog
 {
-    func event(
+    func send(
         severity: Severity
         , message: String
         , file: String
         , line: Int
         , function: String
+        , to endpoints: [String: Endpoint]
     )
-        -> Event
-    {
-        let context =
-            Context(
-                date: .init()
-                , lineNumber: line
-                , functionName: function
-                , filePath: file
-                , threadName: Thread.current.name ?? ""
-                , isMainThread: Thread.current.isMainThread
-        )
-        
-        return Event(
-            severity: severity
-            , message: message
-            , context: context
-        )
-    }
-    
-    
-    func send(_ event: Event, to endpoints: [Endpoint])
     {
         endpoints.forEach {
-            event.send(to: $0, format: $0.preferredFormat)
+            let (identifier, endpoint) = $0
+            
+            let context =
+                Context(
+                    identifier: identifier
+                    , date: .init()
+                    , lineNumber: line
+                    , functionName: function
+                    , filePath: file
+                    , threadName: Thread.current.name ?? ""
+                    , isMainThread: Thread.current.isMainThread
+            )
+            
+            let event =
+                Event(
+                    severity: severity
+                    , message: message
+                    , context: context
+            )
+            
+            event.send(to: endpoint, format: endpoint.preferredFormat)
         }
     }
 }

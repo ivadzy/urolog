@@ -138,7 +138,8 @@ extension Context
 {
     static var test: Context {
         Context(
-            date: Date(timeIntervalSince1970: 1337)
+              identifier: "Test Identifier"
+            , date: Date(timeIntervalSince1970: 1337)
             , lineNumber: 9
             , functionName: "Test Function Name"
             , filePath: "Test File Path"
