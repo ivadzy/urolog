@@ -22,7 +22,7 @@ public extension Urolog
 {
     func register(_ endpoint: Endpoint, with identifier: String)
     {
-        guard endpoints[identifier] != nil
+        guard endpoints[identifier] == nil
         else {
             return
         }
