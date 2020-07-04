@@ -22,7 +22,6 @@ extension FileTextStream
     public func write(_ entry: String)
     {
         if let data = data(from: entry) {
-            fileHandle.seekToEndOfFile()
             fileHandle.write(data)
         }
     }
